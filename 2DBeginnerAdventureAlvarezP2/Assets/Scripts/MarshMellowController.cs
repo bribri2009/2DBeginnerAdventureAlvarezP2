@@ -6,9 +6,14 @@ using UnityEngine;
 public class MarshMellowController : MonoBehaviour
 {
     public float speed = 3.0f;
+
     public int maxHealth = 5;
+    public float timeInvincible = 2;
     public int health { get { return currentHealth; } }
     int currentHealth;
+
+    bool isInvincable;
+    float invincibleTimer;
 
 
     Rigidbody2D rigidbody2d;
@@ -30,6 +35,15 @@ public class MarshMellowController : MonoBehaviour
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
 
+        if(isInvincable)
+        {
+            invincibleTimer -= Time.deltaTime;
+            if(invincibleTimer < 0)
+            {
+                isInvincable = false;
+            }
+        }
+
     }
     void FixedUpdate()
     {
@@ -41,7 +55,19 @@ public class MarshMellowController : MonoBehaviour
     }
     public void ChangeHealth(int amount)
     {
+        if (amount < 0)
+        {
+            return;
+        }
+        if (isInvincable)
+        {
+
+
+            isInvincable = true;
+            invincibleTimer = timeInvincible;
+        }
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         Debug.Log(currentHealth + "/" + maxHealth);
+
     }
 }
