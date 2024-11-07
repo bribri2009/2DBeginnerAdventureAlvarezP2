@@ -35,10 +35,10 @@ public class MarshMellowController : MonoBehaviour
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
 
-        if(isInvincable)
+        if (isInvincable)
         {
             invincibleTimer -= Time.deltaTime;
-            if(invincibleTimer < 0)
+            if (invincibleTimer < 0)
             {
                 isInvincable = false;
             }
@@ -57,11 +57,10 @@ public class MarshMellowController : MonoBehaviour
     {
         if (amount < 0)
         {
-            return;
-        }
-        if (isInvincable)
-        {
-
+            if (isInvincable)
+            {
+                return;
+            }
 
             isInvincable = true;
             invincibleTimer = timeInvincible;
