@@ -13,7 +13,7 @@ TagManager:
   - UI
   - 
   - 
-  - Player
+  - Character
   - Projectile
   - 
   - 
@@ -35,8 +35,8 @@ TagManager:
   - 
   - 
   - 
-  - NPC
-  - Camera
+  - 
+  - 
   m_SortingLayers:
   - name: Background
     uniqueID: 2766579207
